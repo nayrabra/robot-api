@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.13.0 on darwin)" generated="2026-04-02T12:56:47.612320" rpa="false" schemaversion="5">
+<suite id="s1" name="Getporid" source="/Users/nayrabraga/Desktop/QA-automation/robot-python-api/getporid.robot">
+<test id="s1-t1" name="Cenário 1: Consultando os dados da reserva cadastrada por id" line="34">
+<kw name="Step 1: Consultar por id">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2026-04-02T12:56:48.057123" level="INFO">GET Request : url=https://restful-booker.herokuapp.com/booking/11 
+ path_url=/booking/11 
+ headers={'User-Agent': 'python-requests/2.33.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-04-02T12:56:48.057801" level="INFO">GET Response : url=https://restful-booker.herokuapp.com/booking/11 
+ status=200, reason=OK 
+ headers={'Content-Length': '169', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Thu, 02 Apr 2026 15:56:48 GMT', 'Etag': 'W/"a9-pLno4M4jARCCH8k0BsLT0ALMqUE"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=Mg%2BhTW24buxDgMhcHZIZp4NDqhiFeBelZlPhNxXT8j0%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1775145408"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=Mg%2BhTW24buxDgMhcHZIZp4NDqhiFeBelZlPhNxXT8j0%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1775145408"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"firstname":"John","lastname":"Smith","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"} 
+ </msg>
+<msg time="2026-04-02T12:56:48.058487" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${URL_API}/11</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2026-04-02T12:56:47.666202" elapsed="0.392370"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-04-02T12:56:48.060775" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<arg>${response}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-04-02T12:56:48.059321" elapsed="0.001561"/>
+</kw>
+<status status="PASS" start="2026-04-02T12:56:47.665529" elapsed="0.395465"/>
+</kw>
+<kw name="Step 2: Verficar o first name">
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-04-02T12:56:48.062660" level="INFO">${firstnamevalue} = John</msg>
+<var>${firstnamevalue}</var>
+<arg>${response.json()}</arg>
+<arg>firstname</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-04-02T12:56:48.061696" elapsed="0.000999"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${firstnamevalue}</arg>
+<arg>John</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-04-02T12:56:48.063079" elapsed="0.000712"/>
+</kw>
+<status status="PASS" start="2026-04-02T12:56:48.061372" elapsed="0.002556"/>
+</kw>
+<kw name="Step 3: Verficar o last name">
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-04-02T12:56:48.065441" level="INFO">${lastnamevalue} = Smith</msg>
+<var>${lastnamevalue}</var>
+<arg>${response.json()}</arg>
+<arg>lastname</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-04-02T12:56:48.064650" elapsed="0.000830"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${lastnamevalue}</arg>
+<arg>Smith</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-04-02T12:56:48.065602" elapsed="0.000326"/>
+</kw>
+<status status="PASS" start="2026-04-02T12:56:48.064258" elapsed="0.001739"/>
+</kw>
+<kw name="Step 4: Verficar o preço">
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-04-02T12:56:48.067315" level="INFO">${totalpricevalue} = 111</msg>
+<var>${totalpricevalue}</var>
+<arg>${response.json()}</arg>
+<arg>totalprice</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-04-02T12:56:48.066609" elapsed="0.000747"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-04-02T12:56:48.067918" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${totalpricevalue}</arg>
+<arg>111</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2026-04-02T12:56:48.067505" elapsed="0.000498"/>
+</kw>
+<status status="PASS" start="2026-04-02T12:56:48.066185" elapsed="0.001900"/>
+</kw>
+<kw name="Step 5: Verficar o adicional">
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-04-02T12:56:48.069192" level="INFO">${additionalneedsvalue} = Breakfast</msg>
+<var>${additionalneedsvalue}</var>
+<arg>${response.json()}</arg>
+<arg>additionalneeds</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-04-02T12:56:48.068587" elapsed="0.000637"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${additionalneedsvalue}</arg>
+<arg>Breakfast</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-04-02T12:56:48.069341" elapsed="0.000331"/>
+</kw>
+<status status="PASS" start="2026-04-02T12:56:48.068313" elapsed="0.001432"/>
+</kw>
+<kw name="Step 6: Verficar se o depositpaid é true">
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-04-02T12:56:48.070724" level="INFO">${depositpaid} = True</msg>
+<var>${depositpaid}</var>
+<arg>${response.json()}</arg>
+<arg>depositpaid</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-04-02T12:56:48.070178" elapsed="0.000576"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${depositpaid}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-04-02T12:56:48.070864" elapsed="0.000362"/>
+</kw>
+<status status="PASS" start="2026-04-02T12:56:48.069929" elapsed="0.001363"/>
+</kw>
+<status status="PASS" start="2026-04-02T12:56:47.665027" elapsed="0.406426"/>
+</test>
+<status status="PASS" start="2026-04-02T12:56:47.613311" elapsed="0.458681"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Getporid" id="s1" pass="1" fail="0" skip="0">Getporid</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
