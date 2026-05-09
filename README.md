@@ -15,19 +15,6 @@ Os testes validam requisições GET, status code da resposta e os dados retornad
 
 ---
 
-## Estrutura do Projeto
-
-```
-├── buscaporget.robot
-├── getporid.robot
-├── interactive_console_output.xml
-├── log.html
-├── output.xml
-├── report.html
-```
-
----
-
 ## API Utilizada
 
 API pública utilizada para os testes:
